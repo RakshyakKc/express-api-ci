@@ -1,10 +1,17 @@
 language: node_js
 node_js:
-  - 'stable'
+- stable
 install: npm install
 services:
-  - postgresql
+- postgresql
 before_script:
-  - npm run db:create:test
+- npm run db:create:test
 script: npm test
 after_success: npm run coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: g+JxnsBruYFS75fLD5McCnvY38vyWTY2PtV+FCFdgspCzlsV5uWI1sCJQN/JbSx89Fyir72IhVHz2r8zLZuOcVGqdz3XLVW1nMqrWJDa8SXRuoA4Hkzt6r+DTVmQiCvoVhr4PAbe+BPwGlNAY32ZIG6JsdedTV5RlplRPz6uE4iStpEzlyIBX/44C9YanViqjLEBXkshCCxrLXua/oQZRmO7P+oBLsKPxLn8N+eYnZ/RJT+wjchtFuaVkfZDYDS9g4U8GXCZ7JiMA0WX3fYyqQ+So+7eT1WyTqi4sxBZxK2KdQYsSuOH0WZfV94l/3wkmvO4GmSd2btjW0H0nYba1snva/bP5hl7/ecsj5CfDe85PAypjIz1PeGc4GBSvSx3DyKLfG0MkwLMMm5EBx9WPiV5ryZwwS+mqrU8uPw/WH7WFytqItI86JhGGT8WOtm/EhknLwF+0Ha7mynWH/xhPV57re0IhCm6K4kgvyE2nZfwQAqbLDGakF7kXUEY1sxnJlWeLJTdZc/j6+BsFw4huhaC9dNVpNBVSBiVW3ctdt0qc6H7Xy6qinlm52nyJ8y46+8pHyeEwDVl4yWtEm8wZH+aWPHfoOmunNJTqjDcvSZAC5wcY3Jxvm8owQBlCSJBUUxbah8ZaYGmBeeIotMePaZK3LAv12lb6vHnVptDJGI=
+  app: express-api-ci-kc
+  on:
+    repo: rakshyak/express-api-ci
