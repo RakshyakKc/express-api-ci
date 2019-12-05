@@ -7,7 +7,7 @@ services:
 before_script:
 - npm run db:create:test
 script: npm test
-after_success: npm run coverage
+after_success: npm run coverage && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all
 deploy:
   provider: heroku
   api_key:
