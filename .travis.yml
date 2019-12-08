@@ -15,3 +15,6 @@ deploy:
   app: express-api-ci-kc
   on:
     repo: rakshyak/express-api-ci
+  run:
+    - "npx sequelize-cli db:migrate"
+    - "npx sequelize-cli db:seed:all"
